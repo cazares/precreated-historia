@@ -8,7 +8,11 @@ public class Player : Character
     {
       if (collision.gameObject.CompareTag("CanBePickedUp"))
       {
-        collision.gameObject.SetActive(false);
+        Item hitObject = collision.gameObject.GetComponent<Consumable>().item;
+        if (hitObject != null) {
+          print("Hit: " + hitObject.objectName);
+          collision.gameObject.SetActive(false);
+        }  
       }
     }
 }
